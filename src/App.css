@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1e40af;
+  --color-background: #F0FDF4;
+
+}
+
+@plugin "daisyui";
+
+@import "@fortawesome/fontawesome-free/css/all.min.css";

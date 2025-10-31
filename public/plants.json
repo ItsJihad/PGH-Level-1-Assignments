@@ -1,0 +1,74 @@
+[
+  {
+    "plantId": 1,
+    "plantName": "Fiddle Leaf Fig",
+    "category": "Indoor Tree",
+    "price": 45,
+    "rating": 4.7,
+    "availableStock": 10,
+    "careLevel": "Medium",
+    "description": "Tall indoor tree with large, violin-shaped leaves that create a striking visual in any room. Thrives in bright, indirect light and helps purify the indoor air. Perfect for adding height and elegance to living spaces. Regular watering and occasional pruning keeps it lush and healthy.",
+    "image": "https://images.pexels.com/photos/1673973/pexels-photo-1673973.jpeg",
+    "providerName": "Green Haven"
+  },
+  {
+    "plantId": 2,
+    "plantName": "Peace Lily",
+    "category": "Flowering",
+    "price": 25,
+    "rating": 4.6,
+    "availableStock": 8,
+    "careLevel": "Medium",
+    "description": "Elegant white blooms that brighten your room while effectively filtering indoor air pollutants. Low-maintenance and tolerant to low light conditions, making it ideal for offices or living rooms. Keep soil moist and enjoy its graceful foliage and occasional fragrant flowers.",
+    "image": "https://images.pexels.com/photos/1557652/pexels-photo-1557652.jpeg",
+    "providerName": "Bloom Haven"
+  },
+  {
+    "plantId": 3,
+    "plantName": "Money Tree",
+    "category": "Indoor Tree",
+    "price": 30,
+    "rating": 4.8,
+    "availableStock": 12,
+    "careLevel": "Easy",
+    "description": "Braided trunk and lush green leaves symbolize good luck, prosperity, and positive energy. Perfect for desktops, shelves, or corners. Easy to care for: water moderately and provide bright, indirect light. Enhances indoor aesthetics and encourages a serene, natural vibe.",
+    "image": "https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg",
+    "providerName": "Lucky Green"
+  },
+  {
+    "plantId": 4,
+    "plantName": "Rubber Plant",
+    "category": "Indoor Tree",
+    "price": 35,
+    "rating": 4.5,
+    "availableStock": 7,
+    "careLevel": "Medium",
+    "description": "Glossy green leaves and resilient growth make it ideal for indoor decoration. Adaptable to different light conditions but grows best in bright, indirect light. Helps purify the air and brings a tropical touch to interiors. Occasional wiping of leaves keeps them shiny and healthy.",
+    "image": "https://images.pexels.com/photos/56875/tree-dawn-nature-bucovina-56875.jpeg",
+    "providerName": "Urban Green"
+  },
+  {
+    "plantId": 5,
+    "plantName": "Dragon Tree",
+    "category": "Indoor Tree",
+    "price": 40,
+    "rating": 4.4,
+    "availableStock": 5,
+    "careLevel": "Medium",
+    "description": "Unique spiky foliage with striking red edges makes it a modern statement plant. Thrives in bright to moderate light and requires minimal watering. Adds height and style to indoor spaces and symbolizes resilience and strength. Perfect for living rooms, offices, or as a centerpiece.",
+    "image": "https://images.pexels.com/photos/599708/pexels-photo-599708.jpeg",
+    "providerName": "Exotic Greens"
+  },
+  {
+    "plantId": 6,
+    "plantName": "Norfolk Island Pine",
+    "category": "Indoor Tree",
+    "price": 50,
+    "rating": 4.9,
+    "availableStock": 6,
+    "careLevel": "Medium",
+    "description": "Miniature indoor pine with symmetrical branches, perfect for adding a touch of greenery to any indoor space. Thrives in bright, indirect light and requires moderate watering. Adds elegance and freshness to living rooms, bedrooms, or offices, and is ideal as a natural décor piece during the holidays.",
+    "image": "https://images.pexels.com/photos/1080401/pexels-photo-1080401.jpeg",
+    "providerName": "Forest Home"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Watering",
+    "icon": "https://img.icons8.com/?size=100&id=80577&format=png&color=000000",
+    "description": "Learn the right watering schedule for your plants",
+    "tips": [
+      "Check soil moisture before watering",
+      "Water thoroughly until it drains",
+      "Reduce watering in winter months",
+      "Use room temperature water"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Sunlight",
+    "icon": "https://img.icons8.com/?size=100&id=65474&format=png&color=000000",
+    "description": "Match your plant to your lighting needs",
+    "tips": [
+      "Place plants in bright, indirect light for most houseplants",
+      "Rotate plants regularly for even growth",
+      "Avoid direct harsh sunlight for sensitive leaves",
+      "Use grow lights if natural light is insufficient"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Humidity",
+    "icon": "https://img.icons8.com/?size=100&id=6ozQ6RVpK3sa&format=png&color=000000",
+    "description": "Keep tropical plants happy with proper humidity",
+    "tips": [
+      "Group plants together to increase humidity",
+      "Mist plants regularly",
+      "Use a pebble tray with water",
+      "Consider a humidifier in dry environments"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Fertilizing",
+    "icon": "https://img.icons8.com/?size=100&id=tlyGjVXnlqUW&format=png&color=000000",
+    "description": "Feed your plants the right way",
+    "tips": [
+      "Fertilize monthly during spring and summer",
+      "Reduce or stop fertilizing in fall and winter",
+      "Use balanced, water-soluble fertilizer for indoor plants",
+      "Follow package instructions to avoid overfeeding"
+    ]
+  }
+]
