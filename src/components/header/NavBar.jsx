@@ -55,14 +55,14 @@ function NavBar() {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 font-[montserrat]  ">
             <li>
-              <a>Home</a>
+              <a  >Home</a>
             </li>
             <li>
               <a>Browse Products</a>
             </li>
-            <li></li>
+           
             <li>
               <a>Cart</a>
             </li>
@@ -122,9 +122,9 @@ function NavBar() {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
+                  <a className="justify-between font-[montserrat]">
                     Profile
-                    <span className="badge">Importer</span>
+                    <span className="badge font-[montserrat]">Importer</span>
                   </a>
                 </li>
                 <li>
@@ -136,7 +136,7 @@ function NavBar() {
               </ul>
             </div>
           ) : (
-            <button className="btn btn-outline btn-primary ">Sign In/Up</button>
+            <button className="btn btn-outline btn-primary font-[montserrat] ">Sign In/Up</button>
           )}
         </div>
       </div>
