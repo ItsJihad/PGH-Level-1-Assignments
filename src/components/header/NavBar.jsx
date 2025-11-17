@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link, Links } from "react-router";
 
 function NavBar() {
-  const [logged, setLogged] = useState(true);
-  const logo = <img src='/assets/logo.png' className="ml-2  " />
+  const [logged, setLogged] = useState(false);
+  const logo = <img src='/assets/logo.png' className=" w-13  " />
   return (
-    <div>
-      <div className="navbar  bg-base-100/30 shadow-sm backdrop-blur-xl    px-3   lg:px-15">
+    <div className="  z-10 sticky top-3   px-4">
+      <div className="navbar  bg-base-100/30 shadow-xl backdrop-blur-xl rounded-full lg:px-15">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +28,7 @@ function NavBar() {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow font-[montserrat]"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow font-[montserrat] "
             >
               <li>
                 <Link to={"/"}>Home</Link>
@@ -39,6 +39,12 @@ function NavBar() {
               <li>
                 <Link to={"/cart"}>Cart</Link>
               </li>
+               <li>
+              <Link to={"/my-exports"}>My Exports</Link>
+              </li>
+               <li>
+              <Link to={"/my-imports"}>My Imports</Link>
+              </li>
               
           
             </ul>
@@ -46,11 +52,12 @@ function NavBar() {
           <div className="flex justify-center items-center">
             
             {logo}
+            {/* <h2 className="font-[montserrat] md:text-3xl  lg:text-3xl font-extrabold px-3 hidden md:block">IE HUB</h2> */}
             
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-[montserrat]  ">
+          <ul className="menu menu-horizontal px-1 font-[montserrat] text-lg  ">
             <li>
               <Link to={"/"}>Home</Link>
             </li>
@@ -63,6 +70,9 @@ function NavBar() {
             </li>
             <li>
               <Link to={"/my-exports"}>My Exports</Link>
+            </li>
+             <li>
+              <Link to={"/my-imports"}>My Imports</Link>
             </li>
             
           </ul>

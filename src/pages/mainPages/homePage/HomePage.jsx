@@ -7,7 +7,7 @@ import TrustSection from "../../../components/SECTIONS/Banners/TrustSection";
 function HomePage() {
   return (
     <div>
-      <div className="p-5 sm:p-10">
+      <div className="p-5 md:px-25">
         <HeroSection></HeroSection>
         <PopularSection></PopularSection>
         <TrendingSection></TrendingSection>

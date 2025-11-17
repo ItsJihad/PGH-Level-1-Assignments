@@ -198,7 +198,7 @@ function TrustSection() {
               className="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 object-cover"
             />
             <div>
-              <h4 className="text-neutral-900 dark:text-white">John Doe</h4>
+              <h4 className="text-primary">John Doe</h4>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 Tech Innovations Inc.
               </p>
@@ -294,7 +294,7 @@ function TrustSection() {
               className="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 object-cover"
             />
             <div>
-              <h4 className="text-black dark:text-white ">John Doe</h4>
+              <h4 className="text-primary">John Doe</h4>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 Tech Innovations Inc.
               </p>
