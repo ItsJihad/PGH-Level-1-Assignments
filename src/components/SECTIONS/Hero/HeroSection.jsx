@@ -5,7 +5,7 @@ function HeroSection() {
     <div >
       <div className='grid grid-cols-1 sm:grid-cols-3 font-[montserrat] '>
             <div className='col-span-2 '>
-              <div className='sm:hidden'>
+              <div className='relative -z-30 sm:hidden'>
                 <div className='grid sm:grid-cols-3  order-1 items-center justify-center mt-15 mb-10 sm:mt-0 sm:mb-0'>
               <img className='rounded-2xl relative  ' src="/assets/image1.png"  />
               <img className='rounded-full sm:rounded-2xl absolute ml-62 mb-60 sm:ml-25 sm:mt-30 sm:mb-0 w-30 h-30 sm:w-60  sm:h-45' src="/assets/image2.png"  />

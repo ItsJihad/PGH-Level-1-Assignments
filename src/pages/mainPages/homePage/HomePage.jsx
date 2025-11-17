@@ -1,6 +1,4 @@
-import React from 'react'
 
-import AllProducts from '../Products/AllProducts'
 import HeroSection from '../../../components/SECTIONS/Hero/HeroSection'
 import TrendingSection from '../../../components/SECTIONS/Trending/TrendingSection'
 import ExportHub from '../../../components/SECTIONS/Banners/ExportHub'

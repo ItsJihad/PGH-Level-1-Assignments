@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router";
 
 function NavBar() {
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(true);
   const logo = <img src='/assets/logo.png' className="ml-2  " />
   return (
     <div>
@@ -27,25 +28,19 @@ function NavBar() {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow font-[montserrat]"
             >
               <li>
-                <a>Item 1</a>
+                <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
+                <Link to={"/products"}>Browse Products</Link>
               </li>
               <li>
-                <a>Item 3</a>
+                <Link to={"/cart"}>Cart</Link>
               </li>
+              
+          
             </ul>
           </div>
           <div className="flex justify-center items-center">
@@ -57,14 +52,14 @@ function NavBar() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-[montserrat]  ">
             <li>
-              <a  >Home</a>
+              <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <a>Browse Products</a>
+              <Link to={"/products"}>Browse Products</Link>
             </li>
            
             <li>
-              <a>Cart</a>
+              <Link to={"/cart"}>Cart</Link>
             </li>
           </ul>
         </div>
@@ -119,7 +114,7 @@ function NavBar() {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow"
               >
                 <li>
                   <a className="justify-between font-[montserrat]">
