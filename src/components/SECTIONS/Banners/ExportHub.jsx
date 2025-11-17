@@ -1,4 +1,6 @@
+
 import React from 'react'
+import Card from '../../singleComponents/Card'
 
 function ExportHub() {
   return (
@@ -33,6 +35,12 @@ function ExportHub() {
                         </div>
             </div>
             
+        </div>
+
+        <div className='grid grid-cols-1 gap-5 py-8 md:grid-cols-2 lg:grid-cols-3 '>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
         </div>
 
     </div>

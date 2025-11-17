@@ -2,8 +2,8 @@ import React from "react";
 
 function TrustSection() {
   return (
-    <div className="sm:p-20">
-      <div className="text-center">
+    <div className=" p-5">
+      <div className="text-center py-5">
         <h2 className="font-[montserrat] text-3xl font-bold">
           Trusted Globally
         </h2>
@@ -12,8 +12,8 @@ function TrustSection() {
         </h2>
       </div>
 
-      <div className=" gap-5 grid-cols-1 sm:grid-cols-2  sm: grid sm:flex items-center justify-center  py-4 ">
-        <div className="shadow-2xl rounded-2xl p-8 h-full hover:border-purple-500/40 transition-all duration-500">
+      <div className=" gap-5  md:grid grid-cols-2 lg:grid-cols-3  ">
+        <div className="shadow-2xl rounded-2xl p-8 hover:border-purple-500/40 transition-all duration-500">
           <div className="flex gap-1 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ function TrustSection() {
               className="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 object-cover"
             />
             <div>
-              <h4 className="text-neutral-900 dark:text-white">John Doe</h4>
+              <h4 className="text-primary">John Doe</h4>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 Tech Innovations Inc.
               </p>

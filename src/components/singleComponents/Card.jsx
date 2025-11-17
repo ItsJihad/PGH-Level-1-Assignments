@@ -33,9 +33,9 @@ function Card() {
               <div>10,000 units</div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 font-[montserrat]">
-            <button className="btn btn-primary w-">View Details</button>
-            <button className="btn btn-primary ">Buy Now</button>
+          <div className="grid grid-cols-2 gap-3 font-[montserrat]">
+            <button className="btn btn-primary ">View Details</button>
+            <button className="btn btn-primary  ">Buy Now</button>
           </div>
         </div>
       </div>

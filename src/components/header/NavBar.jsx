@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, Links } from "react-router";
 
 function NavBar() {
   const [logged, setLogged] = useState(true);
@@ -61,6 +61,10 @@ function NavBar() {
             <li>
               <Link to={"/cart"}>Cart</Link>
             </li>
+            <li>
+              <Link to={"/my-exports"}>My Exports</Link>
+            </li>
+            
           </ul>
         </div>
         <div className="navbar-end">
@@ -110,26 +114,29 @@ function NavBar() {
                     alt="Tailwind CSS Navbar component"
                     src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                   />
+                  
                 </div>
               </div>
               <ul
                 tabIndex="-1"
                 className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow"
               >
-                <li>
-                  <a className="justify-between font-[montserrat]">
+                {/* <li>
+                  <Links to={"/"} className="justify-between font-[montserrat]">
                     Profile
                     <span className="badge font-[montserrat]">Importer</span>
-                  </a>
+                  </Links>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Links to={"/"}>Settings</Links>
                 </li>
                 <li>
-                  <a>Logout</a>
-                </li>
+                  <Links to={"/"}>Logout</Links>
+                </li> */}
               </ul>
+              
             </div>
+            
           ) : (
             <button className="btn btn-outline btn-primary font-[montserrat] ">Sign In/Up</button>
           )}

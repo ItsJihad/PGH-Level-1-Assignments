@@ -4,10 +4,10 @@ import Card from "../../singleComponents/Card";
 function TrendingSection() {
   return (
     <div>
-      <h2 className="font-[montserrat] text-4xl font-bold p-3">Trending Products</h2>
+      <h2 className="font-[montserrat] text-3xl md:text-4xl font-bold p-3 text-center md:text-start">Trending Products</h2>
       <div className="grid grid-cols-4  font-[montserrat]  px-3 mb-4 ">
         <div className="sm:flex col-span-4 justify-between  items-center  ">
-          <h3 className="text-sm sm:text-xl  ">
+          <h3 className="text-sm sm:text-xl  text-center md:text-start ">
             Discover our newest additions from verified exporters
           </h3>
           <div className="flex justify-center-safe sm:justify-end py-3  ">

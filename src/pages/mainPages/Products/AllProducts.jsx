@@ -17,7 +17,7 @@ function AllProducts() {
       </div>
       
       <h2 className='font-[montserrat] font-light py-2'>Showing <span className='font-bold'>12</span> products :</h2>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4'>
         <Card></Card>
         <Card></Card>
         <Card></Card>
