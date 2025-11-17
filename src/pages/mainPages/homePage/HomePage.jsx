@@ -4,6 +4,7 @@ import ExportHub from "../../../components/SECTIONS/Banners/ExportHub";
 import PopularSection from "../../../components/SECTIONS/Banners/PopularSection";
 import TrustSection from "../../../components/SECTIONS/Banners/TrustSection";
 
+
 function HomePage() {
   return (
     <div>
@@ -13,6 +14,7 @@ function HomePage() {
         <TrendingSection></TrendingSection>
         <ExportHub></ExportHub>
         <TrustSection></TrustSection>
+ 
       </div>
     </div>
   );

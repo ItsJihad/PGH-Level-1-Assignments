@@ -10,7 +10,7 @@ function HeroSection() {
                 <div className="hover-3d">
                           {/* content */}
                           <figure className="rounded-2xl min-h-60 md:hidden">
-                            <img src="https://img.freepik.com/3d-models/v2/O/0/V/Y/0/Z/D/O0VY0ZDL/caiman-character-poster-2.png?t=st=1763378412~exp=1763382012~hmac=cc417d6147daa2dd2218bd8de3930bc781561bdb76b6462b953ef0c1f99abbc4&w=1000"  />
+                            <img src="/assets/model.png"  />
                           </figure>
                           {/* 8 empty divs needed for the 3D effect */}
                           <div></div>

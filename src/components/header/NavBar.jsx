@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Links } from "react-router";
+import { Link, Links, NavLink } from "react-router";
 
 function NavBar() {
   const [logged, setLogged] = useState(false);
@@ -31,48 +31,49 @@ function NavBar() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow font-[montserrat] "
             >
               <li>
-                <Link to={"/"}>Home</Link>
-              </li>
-              <li>
-                <Link to={"/products"}>Browse Products</Link>
-              </li>
-              <li>
-                <Link to={"/cart"}>Cart</Link>
-              </li>
-               <li>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"/products"}>All Products</Link>
+            </li>
+           
+            <li>
               <Link to={"/my-exports"}>My Exports</Link>
-              </li>
-               <li>
+            </li>
+             <li>
               <Link to={"/my-imports"}>My Imports</Link>
-              </li>
+            </li>
+            <li>
+              <Link to={"/add-export"}>Add Export</Link>
+            </li>
               
           
             </ul>
           </div>
           <div className="flex justify-center items-center">
             
-            {logo}
-            {/* <h2 className="font-[montserrat] md:text-3xl  lg:text-3xl font-extrabold px-3 hidden md:block">IE HUB</h2> */}
+            
+             <NavLink to={"/"}> {logo}</NavLink>
             
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-[montserrat] text-lg  ">
+          <ul className="menu menu-horizontal px-1 font-[montserrat] text-lg font-bold  ">
             <li>
               <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to={"/products"}>Browse Products</Link>
+              <Link to={"/products"}>All Products</Link>
             </li>
            
-            <li>
-              <Link to={"/cart"}>Cart</Link>
-            </li>
             <li>
               <Link to={"/my-exports"}>My Exports</Link>
             </li>
              <li>
               <Link to={"/my-imports"}>My Imports</Link>
+            </li>
+            <li>
+              <Link to={"/add-export"}>Add Export</Link>
             </li>
             
           </ul>
@@ -148,7 +149,7 @@ function NavBar() {
             </div>
             
           ) : (
-            <button className="btn btn-outline btn-primary font-[montserrat] ">Sign In/Up</button>
+            <Link to={"/sign-in"} className="btn btn-outline btn-primary font-[montserrat] "> Sign In/Up </Link>
           )}
         </div>
       </div>

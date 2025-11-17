@@ -5,6 +5,10 @@ import HomePage from "../pages/mainPages/homepage/HomePage";
 import AllProducts from "../pages/mainPages/Products/AllProducts";
 import Cart from "../pages/mainPages/Products/Cart/Cart";
 import MyExports from "../pages/mainPages/UserPages/Export/MyExports";
+import MyImports from "../pages/mainPages/UserPages/import/MyImports";
+import AddExport from "../pages/mainPages/UserPages/Export/AddExport";
+import SignIn from "../pages/mainPages/UserPages/SignIn";
+import SignUp from "../pages/mainPages/UserPages/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +30,19 @@ export const router = createBrowserRouter([
             },{
                 path:"/my-exports",
                 Component:MyExports
+            },{
+                path:"/my-imports",
+                Component:MyImports
+            },{
+                path:"add-export",
+                Component:AddExport
+            },{
+                path:"/sign-in",
+                Component:SignIn
+            }
+            ,{
+                path:"/sign-up",
+                Component:SignUp
             }
         ]
     }
