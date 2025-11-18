@@ -23,14 +23,14 @@ function HeroSection() {
                           <div></div>
                     </div>
                </div>
-                <div className='bg-blue-400 w-60 rounded-3xl p-2'>🌍 Global B2B Marketplace</div>
+                <div className='bg-[#422AD5] w-60 text-white rounded-3xl p-2'>🌍 Global B2B Marketplace</div>
                 
                 <div className='  py-5'>
                   <h2 className='text-3xl font-bold'>Connect with Verified Exporters Worldwide</h2>
                   <h2 className='text-lg font-light'>Access thousands of premium products from trusted suppliers in over 150 countries. Secure transactions verified quality.</h2>
                   <div className='flex py-4 gap-5'>
-                    <Link to={"/products"} className='btn btn-outline btn-primary'>Browse Products</Link>
-                    <Link to={"/profile"} className='btn  btn-primary'>Start Selling</Link>
+                    <Link to={"/products"} className='btn btn-outline btn-primary rounded-xl'>Browse Products</Link>
+                    <Link to={"/profile"} className='btn  btn-primary rounded-xl'>Start Selling</Link>
                   </div>
                 </div>
                 <div className=' flex sm:py-2 gap-15 text-center  '>

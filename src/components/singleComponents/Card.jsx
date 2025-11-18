@@ -2,8 +2,8 @@ import React from "react";
 
 function Card() {
   return (
-    <div className="">
-      <div className="card bg-base-100  shadow-sm backdrop-blur-xs  shadow-blue-100 hover:shadow-blue-500/20 dark:hover:shadow-blue-900/40 transition-all duration-500 flex flex-col h-full hover:border-white/40 dark:hover:border-white/20  ">
+    <div className="hover:scale-102 transition-all">
+      <div className="card bg-base-100  shadow-sm backdrop-blur-xs  shadow-blue-500/30 hover:shadow-blue-500/20 dark:hover:shadow-blue-900/40 transition-all duration-500 flex flex-col h-full hover:border-white/40 dark:hover:border-white/20  ">
         <figure>
           <img
             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -34,8 +34,8 @@ function Card() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3 font-[montserrat]">
-            <button className="btn btn-primary ">View Details</button>
-            <button className="btn btn-primary  ">Buy Now</button>
+            <button className="btn btn-primary text-white ">View Details</button>
+            <button className="btn btn-primary text-white  ">Buy Now</button>
           </div>
         </div>
       </div>
