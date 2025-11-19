@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { Link, Links, NavLink } from "react-router";
+import React, { use, useState } from "react";
+import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../context/AuthContext/AuthContext";
+import { signOut } from "firebase/auth";
+import { Auth } from "../../firebase/firebase.config";
 
 function NavBar() {
-  const [logged, setLogged] = useState(false);
-  const logo = <img src='/assets/logo.png' className=" w-13  " />
+  const { currentUser } = use(AuthContext);
+
+  const LoggOut = () => {
+    signOut(Auth);
+  };
+
+  const logo = <img src="/assets/logo.png" className=" w-13  " />;
   return (
-    <div className="  z-100 sticky top-3   px-4">
+    <div className="  z-99 sticky top-3   px-4">
       <div className="navbar  bg-base-100/30 shadow-xl backdrop-blur-xl rounded-full lg:px-15">
         <div className="navbar-start">
           <div className="dropdown">
@@ -31,51 +39,49 @@ function NavBar() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow font-[montserrat] "
             >
               <li>
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/products"}>All Products</Link>
-            </li>
-           
-            <li>
-              <Link to={"/my-exports"}>My Exports</Link>
-            </li>
-             <li>
-              <Link to={"/my-imports"}>My Imports</Link>
-            </li>
-            <li>
-              <Link to={"/add-export"}>Add Export</Link>
-            </li>
-              
-          
+                <Link to={"/"}>Home</Link>
+              </li>
+              <li>
+                <Link to={"/products"}>All Products</Link>
+              </li>
+
+              <li>
+                <Link to={"/my-exports"}>My Exports</Link>
+              </li>
+              <li>
+                <Link to={"/my-imports"}>My Imports</Link>
+              </li>
+              <li>
+                <Link to={"/add-export"}>Add Export</Link>
+              </li>
             </ul>
           </div>
           <div className="flex justify-center items-center">
-            
-            
-             <NavLink to={"/"}> {logo}</NavLink>
-            
+            <NavLink to={"/"}> {logo}</NavLink>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-[montserrat] text-lg font-bold  ">
             <li>
-              <Link to={"/"}>Home</Link>
+              <NavLink to={"/"}>Home</NavLink>
             </li>
             <li>
-              <Link to={"/products"}>All Products</Link>
+              <NavLink to={"/products"}>All Products</NavLink>
             </li>
-           
+
+            {currentUser && (
+              <ul className="flex">
+                <li>
+                  <NavLink to={"/my-exports"}>My Exports</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/my-imports"}>My Imports</NavLink>
+                </li>
+              </ul>
+            )}
             <li>
-              <Link to={"/my-exports"}>My Exports</Link>
+              <NavLink to={"/add-export"}>Add Export</NavLink>
             </li>
-             <li>
-              <Link to={"/my-imports"}>My Imports</Link>
-            </li>
-            <li>
-              <Link to={"/add-export"}>Add Export</Link>
-            </li>
-            
           </ul>
         </div>
         <div className="navbar-end">
@@ -94,7 +100,6 @@ function NavBar() {
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
 
-            
             <input
               type="checkbox"
               value="light"
@@ -115,7 +120,7 @@ function NavBar() {
               <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
             </svg>
           </label>
-          {logged ? (
+          {currentUser ? (
             <div className="p-4 dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -124,34 +129,40 @@ function NavBar() {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    
+                    src={currentUser.photoURL ? currentUser.photoURL :'/assets/profile.png'}
                   />
-                  
                 </div>
               </div>
               <ul
                 tabIndex="-1"
                 className="menu menu-sm dropdown-content bg-base-100 rounded-xl z-10 mt-3 w-52 p-2 shadow"
               >
-                {/* <li>
-                  <Links to={"/"} className="justify-between font-[montserrat]">
+                <li>
+                  <NavLink
+                    to={"/"}
+                    className="justify-between font-[montserrat]"
+                  >
                     Profile
                     <span className="badge font-[montserrat]">Importer</span>
-                  </Links>
+                  </NavLink>
                 </li>
                 <li>
-                  <Links to={"/"}>Settings</Links>
+                  <NavLink to={"/"}>Settings</NavLink>
                 </li>
                 <li>
-                  <Links to={"/"}>Logout</Links>
-                </li> */}
+                  <NavLink onClick={() => LoggOut()}>Logout</NavLink>
+                </li>
               </ul>
-              
             </div>
-            
           ) : (
-            <Link to={"/sign-in"} className="btn btn-outline btn-primary font-[montserrat] rounded-xl "> Sign In/Up </Link>
+            <Link
+              to={"/sign-in"}
+              className="btn btn-outline btn-primary font-[montserrat] rounded-full "
+            >
+              {" "}
+              Sign In/Up{" "}
+            </Link>
           )}
         </div>
       </div>

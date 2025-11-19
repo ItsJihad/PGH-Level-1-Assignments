@@ -7,11 +7,13 @@ function Root() {
   return (
     <div>
      
-      <NavBar></NavBar>
+      
        <GradientBackground>
+        <NavBar></NavBar>
       <Outlet></Outlet>
-      </GradientBackground>
       <FooterBar></FooterBar>
+      </GradientBackground>
+      
       
     </div>
   );

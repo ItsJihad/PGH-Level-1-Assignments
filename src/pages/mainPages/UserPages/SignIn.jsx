@@ -1,7 +1,41 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../../../context/AuthContext/AuthContext";
 
 export default function SignIn() {
+  const { SignINuser, setLoader,OneTapGoogle } = use(AuthContext);
+   const [errorM,setErrorM]=useState("")
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const SignIner = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    SignINuser(email, password)
+      .then(() => {
+        e.target.reset();
+        setLoader(true);
+        navigate(location.state || "/");
+        setLoader(false);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorM(errorMessage)
+      });
+  };
+
+    const TapLogin=()=>{
+      OneTapGoogle()
+      .then(()=>{
+        setLoader(true);
+        navigate(location.state || "/");
+        setLoader(false);
+      })
+    }
+
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-100   px-4">
       <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto">
@@ -39,10 +73,16 @@ export default function SignIn() {
           </div>
 
           {/* Form */}
-          <form className="space-y-4 sm:space-y-5">
+          <form
+            onSubmit={(e) => SignIner(e)}
+            className="space-y-4 sm:space-y-5"
+          >
             {/* Email */}
             <div className="space-y-1">
-              <label htmlFor="email" className="text-sm text-primary font-medium block">
+              <label
+                htmlFor="email"
+                className="text-sm text-primary font-medium block"
+              >
                 Email
               </label>
               <input
@@ -59,7 +99,10 @@ export default function SignIn() {
             {/* Password */}
             <div className="space-y-1">
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="text-sm text-primary font-medium">
+                <label
+                  htmlFor="password"
+                  className="text-sm text-primary font-medium"
+                >
                   Password
                 </label>
                 <a
@@ -79,7 +122,7 @@ export default function SignIn() {
                 aria-label="Password"
               />
             </div>
-
+              <p className="text-red-600">{errorM}</p>
             {/* Sign In Button */}
             <button
               type="submit"
@@ -101,9 +144,14 @@ export default function SignIn() {
           {/* Google Button */}
           <button
             type="button"
+            onClick={()=>TapLogin()}
             className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-neutral-300  text-primary  bg-white   hover:bg-neutral-100 dark:hover:bg-green-300 transition text-sm sm:text-base"
           >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" aria-hidden="true">
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
               <path
                 fill="currentColor"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -127,7 +175,10 @@ export default function SignIn() {
           {/* Register */}
           <p className="text-center mt-4 text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
             Don't have an account?{" "}
-            <Link to={"/sign-up"} className="text-blue-600 dark:text-blue-400 hover:underline">
+            <Link
+              to={"/sign-up"}
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
               Create account
             </Link>
           </p>

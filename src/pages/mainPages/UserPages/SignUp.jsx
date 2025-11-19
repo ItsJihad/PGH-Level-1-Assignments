@@ -1,9 +1,51 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../../../context/AuthContext/AuthContext";
 
 export default function SignUp() {
+  const { CreateUser, setLoader,OneTapGoogle,currentUser } = use(AuthContext);
+  const [errorM,setErrorM]=useState("")
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const Registrar = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const photoURL = e.target.photoURL.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    CreateUser(email, password)
+      .then(() => {
+        setLoader(true);
+        e.target.reset(), navigate(location.state || "/");
+        setLoader(false);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorM(errorMessage)
+    
+        
+      });
+
+      
+
+  };
+
+
+  const TapLogin=()=>{
+      OneTapGoogle()
+      .then(()=>{
+        setLoader(true);
+        navigate(location.state || "/");
+        setLoader(false);
+      })
+    }
+
+
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-100 font-[montserrat]  px-4">
+    <div className=" p-10 flex items-center justify-center bg-base-100 font-[montserrat]  px-4">
       <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto">
         <div className="bg-base-100   shadow-sm rounded-2xl p-6 sm:p-8 md:p-10 border border-neutral-200   font-[montserrat]">
           {/* Icon */}
@@ -39,7 +81,10 @@ export default function SignUp() {
           </div>
 
           {/* Form */}
-          <form className="space-y-4 sm:space-y-5">
+          <form
+            onSubmit={(e) => Registrar(e)}
+            className="space-y-4 sm:space-y-5"
+          >
             {/* Full name */}
             <div className="space-y-1">
               <label htmlFor="name" className="text-sm font-medium block">
@@ -102,7 +147,7 @@ export default function SignUp() {
                 aria-label="Password"
               />
             </div>
-
+               <p className="text-red-600">{errorM}</p>
             {/* Submit */}
             <button
               type="submit"
@@ -114,16 +159,17 @@ export default function SignUp() {
 
           {/* Divider */}
           <div className="my-5 sm:my-6 flex items-center">
-            <div className="flex-grow border-t border-neutral-200  " />
+            <div className=" border-t border-neutral-200  " />
             <span className="px-3 text-xs sm:text-sm    ">
               Or continue with
             </span>
-            <div className="flex-grow border-t border-neutral-200  " />
+            <div className=" border-t border-neutral-200  " />
           </div>
 
           {/* Google */}
           <button
             type="button"
+            onClick={()=>TapLogin()}
             className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-neutral-300 text-primary  bg-white   hover:bg-neutral-100   transition text-sm sm:text-base"
           >
             <svg

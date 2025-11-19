@@ -9,6 +9,7 @@ import MyImports from "../pages/mainPages/UserPages/import/MyImports";
 import AddExport from "../pages/mainPages/UserPages/Export/AddExport";
 import SignIn from "../pages/mainPages/UserPages/SignIn";
 import SignUp from "../pages/mainPages/UserPages/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +23,8 @@ export const router = createBrowserRouter([
             },
             {
                 path:"/products",
-                Component:AllProducts
+               
+                element: <PrivateRoute><AllProducts></AllProducts> </PrivateRoute>
             },
             {
                 path:"/cart",
