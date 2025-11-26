@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../singleComponents/Card";
+import useAxios from "../../../hooks/UseAxios";
 
 function ExportHub() {
+  const [product,setProduct]=useState([])
+   const axios =useAxios()
+   axios.get('/recent3')
+   .then(data=>{
+    setProduct(data.data)
+    
+   })
   return (
     <div>
       <div className="  flex items-center justify-center py-10">
@@ -46,9 +54,7 @@ function ExportHub() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 py-8 md:grid-cols-2 lg:grid-cols-3 ">
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+       {product.map(product=> <Card key={product._id} product={product}></Card>)}
       </div>
     </div>
   );

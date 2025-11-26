@@ -10,42 +10,64 @@ import AddExport from "../pages/mainPages/UserPages/Export/AddExport";
 import SignIn from "../pages/mainPages/UserPages/SignIn";
 import SignUp from "../pages/mainPages/UserPages/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import ProductDetails from "../pages/mainPages/Products/ProductDetails";
+import LoadingPage from "../pages/additionalPages/Loading/LoadingPage";
 
 export const router = createBrowserRouter([
-    {
-        path:"/",
-        Component:Root,
-        errorElement:<NotFound></NotFound>,
-        children:[
-            {
-                path:"/",
-                Component:HomePage
-            },
-            {
-                path:"/products",
-               
-                element: <PrivateRoute><AllProducts></AllProducts> </PrivateRoute>
-            },
-            {
-                path:"/cart",
-                Component:Cart
-            },{
-                path:"/my-exports",
-                Component:MyExports
-            },{
-                path:"/my-imports",
-                Component:MyImports
-            },{
-                path:"add-export",
-                Component:AddExport
-            },{
-                path:"/sign-in",
-                Component:SignIn
-            }
-            ,{
-                path:"/sign-up",
-                Component:SignUp
-            }
-        ]
-    }
-])
+  {
+    HydrateFallback:<LoadingPage></LoadingPage>,
+    path: "/",
+    Component: Root,
+    errorElement: <NotFound></NotFound>,
+    children: [
+      {
+        path: "/",
+        Component: HomePage,
+        loader: () => fetch("http://localhost:3000/recentproducts"),
+      },
+      {
+        path: "/products",
+        loader: () => fetch("http://localhost:3000/products"),
+        element: (
+          <PrivateRoute>
+            <AllProducts></AllProducts>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        
+        path:'/products/:id',
+        loader:({params})=> fetch(`http://localhost:3000/products/${params.id}`),
+        Component:ProductDetails
+      },
+      {
+        path: "/cart",
+        Component: Cart,
+      },
+      {
+        path: "/my-exports",
+        Component: MyExports,
+      },
+      {
+        path: "/my-imports",
+        Component: MyImports,
+      },
+      {
+        path: "add-export",
+        element: (
+          <PrivateRoute>
+            <AddExport></AddExport>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/sign-in",
+        Component: SignIn,
+      },
+      {
+        path: "/sign-up",
+        Component: SignUp,
+      },
+    ],
+  },
+]);
