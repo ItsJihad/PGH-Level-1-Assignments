@@ -9,7 +9,7 @@ function ProductDetails() {
   const product = useLoaderData();
 
   const { currentUser } = use(AuthContext);
-
+  const [Pquantity, setPquantity] = useState(product.quantity);
   const modalref = useRef(null);
   const handlemodal = () => {
     modalref.current.showModal();
@@ -39,6 +39,10 @@ function ProductDetails() {
           timer: 1500,
         });
       }
+
+      Axios.get(`/products/${product._id}`).then((data) => {
+        setPquantity(data.data.quantity);
+      });
 
       e.target.reset();
       modalref.current.close();
@@ -170,7 +174,7 @@ function ProductDetails() {
                     <span className="text-sm">Available</span>
                   </div>
 
-                  <p className="text-primary  ">{product.quantity} units</p>
+                  <p className="text-primary  ">{Pquantity} units</p>
                 </div>
               </div>
             </div>
@@ -182,7 +186,7 @@ function ProductDetails() {
 
               <div className="flex items-center gap-3">
                 <span className="text-primary   text-sm">
-                  Max: {product.quantity} units
+                  Max: {Pquantity} units
                 </span>
               </div>
             </div>
@@ -204,7 +208,7 @@ function ProductDetails() {
                 </div>
                 <div className="mb-4 p-4 backdrop-blur-xl   rounded-lg">
                   <p className="text-sm text-primary">
-                    Available:{product.quantity} units
+                    Available:{Pquantity} units
                   </p>
                 </div>
                 <div>
@@ -212,7 +216,7 @@ function ProductDetails() {
                     <input
                       type="number"
                       min={1}
-                      max={product.quantity}
+                      max={Pquantity}
                       placeholder="Enter quantity"
                       name="quantity"
                       onChange={(e) => setIsDisabled(e.target.value === "")}
