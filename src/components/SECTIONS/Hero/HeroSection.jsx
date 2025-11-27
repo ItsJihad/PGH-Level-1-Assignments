@@ -30,7 +30,7 @@ function HeroSection() {
                   <h2 className='text-lg font-light'>Access thousands of premium products from trusted suppliers in over 150 countries. Secure transactions verified quality.</h2>
                   <div className='flex py-4 gap-5'>
                     <Link to={"/products"} className='btn btn-outline btn-primary rounded-xl'>Browse Products</Link>
-                    <Link to={"/profile"} className='btn  btn-primary rounded-xl'>Start Selling</Link>
+                    <Link to={"/add-export"} className='btn  btn-primary rounded-xl'>Start Selling</Link>
                   </div>
                 </div>
                 <div className=' flex sm:py-2 gap-15 text-center  '>

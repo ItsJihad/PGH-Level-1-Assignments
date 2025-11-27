@@ -140,7 +140,7 @@ function NavBar() {
               >
                 <li>
                   <NavLink
-                    to={"/"}
+                    to={"/my-profile"}
                     className="justify-between font-[montserrat]"
                   >
                     Profile

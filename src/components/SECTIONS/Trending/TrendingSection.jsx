@@ -20,7 +20,7 @@ function TrendingSection({product}) {
 
       <div>
         <div className="grid gap-4  md:grid-cols-2 lg:grid-cols-3">
-          {product.map(product=> <Card key={product._id} product={product}></Card>)}
+          {product.map(product=>  <Card key={product._id} product={product}></Card>)}
         </div>
       </div>
     </div>

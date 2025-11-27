@@ -7,13 +7,14 @@ import { AuthContext } from "../../../context/AuthContext/AuthContext";
 function ProductDetails() {
   const Axios = useAxios();
   const product = useLoaderData();
+
   const { currentUser } = use(AuthContext);
 
   const modalref = useRef(null);
   const handlemodal = () => {
     modalref.current.showModal();
   };
- const [isDisabled,setIsDisabled]=useState(false)
+  const [isDisabled, setIsDisabled] = useState(false);
   const handleImport = (e) => {
     e.preventDefault();
     const quantity = Number(e.target.quantity.value);
@@ -27,9 +28,8 @@ function ProductDetails() {
       email: currentUser.email,
       quantity,
     };
-     
 
-      Axios.post("/myimports", productQuantity).then((data) => {
+    Axios.post("/myimports", productQuantity).then((data) => {
       if (data.data.insertedId) {
         Swal.fire({
           position: "center",
@@ -39,13 +39,10 @@ function ProductDetails() {
           timer: 1500,
         });
       }
-      
+
       e.target.reset();
       modalref.current.close();
     });
-    
-    
-    
   };
 
   return (
@@ -213,13 +210,12 @@ function ProductDetails() {
                 <div>
                   <form onSubmit={(e) => handleImport(e)}>
                     <input
-                      
                       type="number"
                       min={1}
                       max={product.quantity}
                       placeholder="Enter quantity"
                       name="quantity"
-                      onChange={(e)=>setIsDisabled(e.target.value === "")}
+                      onChange={(e) => setIsDisabled(e.target.value === "")}
                       className=" border border-gray-300 w-full p-4 rounded-lg bg-base-100 backdrop-blur-sm"
                     />
 

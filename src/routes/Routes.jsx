@@ -3,7 +3,6 @@ import Root from "../pages/layout/Root";
 import NotFound from "../pages/additionalPages/errorPage/NotFound";
 import HomePage from "../pages/mainPages/homepage/HomePage";
 import AllProducts from "../pages/mainPages/Products/AllProducts";
-import Cart from "../pages/mainPages/Products/Cart/Cart";
 import MyExports from "../pages/mainPages/UserPages/Export/MyExports";
 import MyImports from "../pages/mainPages/UserPages/import/MyImports";
 import AddExport from "../pages/mainPages/UserPages/Export/AddExport";
@@ -12,10 +11,11 @@ import SignUp from "../pages/mainPages/UserPages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import ProductDetails from "../pages/mainPages/Products/ProductDetails";
 import LoadingPage from "../pages/additionalPages/Loading/LoadingPage";
+import MyProfile from "../pages/mainPages/UserPages/MyProfile";
 
 export const router = createBrowserRouter([
   {
-    HydrateFallback:<LoadingPage></LoadingPage>,
+    HydrateFallback: <LoadingPage></LoadingPage>,
     path: "/",
     Component: Root,
     errorElement: <NotFound></NotFound>,
@@ -30,27 +30,35 @@ export const router = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/products"),
         element: (
           <PrivateRoute>
-            <AllProducts></AllProducts>{" "}
+            <AllProducts></AllProducts>
           </PrivateRoute>
         ),
       },
       {
-        
-        path:'/products/:id',
-        loader:({params})=> fetch(`http://localhost:3000/products/${params.id}`),
-        Component:ProductDetails
-      },
-      {
-        path: "/cart",
-        Component: Cart,
+        path: "/products/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/products/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <ProductDetails></ProductDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-exports",
-        Component: MyExports,
+        element: (
+          <PrivateRoute>
+            <MyExports></MyExports>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-imports",
-        Component: MyImports,
+        element: (
+          <PrivateRoute>
+            <MyImports></MyImports>
+          </PrivateRoute>
+        ),
       },
       {
         path: "add-export",
@@ -67,7 +75,12 @@ export const router = createBrowserRouter([
       {
         path: "/sign-up",
         Component: SignUp,
-      },
+      },{
+        path:'/my-profile',
+        element:<PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+      }
     ],
   },
 ]);

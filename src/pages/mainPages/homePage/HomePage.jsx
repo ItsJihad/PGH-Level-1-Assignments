@@ -4,6 +4,7 @@ import ExportHub from "../../../components/SECTIONS/Banners/ExportHub";
 import PopularSection from "../../../components/SECTIONS/Banners/PopularSection";
 import TrustSection from "../../../components/SECTIONS/Banners/TrustSection";
 import { useLoaderData } from "react-router";
+import TextBanner from "../../../components/SECTIONS/Banners/TextBanner";
 
 
 function HomePage() {
@@ -12,6 +13,7 @@ function HomePage() {
     <div>
       <div className="p-5 md:px-25">
         <HeroSection></HeroSection>
+        <TextBanner></TextBanner>
         <PopularSection></PopularSection>
         <TrendingSection product={product}></TrendingSection>
         
