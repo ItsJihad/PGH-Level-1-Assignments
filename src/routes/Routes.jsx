@@ -12,7 +12,6 @@ import PrivateRoute from "./PrivateRoute";
 import ProductDetails from "../pages/mainPages/Products/ProductDetails";
 import LoadingPage from "../pages/additionalPages/Loading/LoadingPage";
 import MyProfile from "../pages/mainPages/UserPages/MyProfile";
-
 export const router = createBrowserRouter([
   {
     HydrateFallback: <LoadingPage></LoadingPage>,
@@ -27,7 +26,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "/products",
-        loader: () => fetch("http://localhost:3000/products"),
         element: (
           <PrivateRoute>
             <AllProducts></AllProducts>
@@ -36,8 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/products/${params.id}`),
+        loader:({params})=> fetch(`http://localhost:3000/products/${params.id}`),
         element: (
           <PrivateRoute>
             <ProductDetails></ProductDetails>
@@ -75,12 +72,15 @@ export const router = createBrowserRouter([
       {
         path: "/sign-up",
         Component: SignUp,
-      },{
-        path:'/my-profile',
-        element:<PrivateRoute>
+      },
+      {
+        path: "/my-profile",
+        element: (
+          <PrivateRoute>
             <MyProfile></MyProfile>
           </PrivateRoute>
-      }
+        ),
+      },
     ],
   },
 ]);

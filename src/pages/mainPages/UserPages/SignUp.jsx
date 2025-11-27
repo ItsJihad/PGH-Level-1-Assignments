@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
@@ -17,19 +17,13 @@ export default function SignUp() {
     const password = e.target.password.value;
     
     // --------------------------------------------------
-  if (!password) {
-    return Swal.fire("Error", "Password is required", "error");
-  }
-  if (password.length < 6) {
-    return Swal.fire("Error", "Password must be at least 6 characters", "error");
-  }
   const strongPasswordRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,}$/;
 
 if (!strongPasswordRegex.test(password)) {
   return Swal.fire(
     "Weak Password",
-    "Password must have 8+ characters, uppercase, lowercase, number, and symbol",
+    "Password must have 6+ characters, uppercase, lowercase, number, and symbol",
     "error"
   );
 }

@@ -1,9 +1,19 @@
 import SearchComponent from "../../../components/singleComponents/SearchComponent";
 import Card from "../../../components/singleComponents/Card";
-import { useLoaderData } from "react-router";
+import useAxios from "../../../hooks/UseAxios";
+import { use, useEffect, useState } from "react";
+import { AuthContext } from "../../../context/AuthContext/AuthContext";
 
 function AllProducts() {
-  const product = useLoaderData();
+  const {currentUser}=use(AuthContext)
+  const Axios = useAxios();
+  const [product, setProduct] = useState([]);
+
+  useEffect(()=>{
+    Axios.get("/products").then((data) => {
+    setProduct(data.data);
+  });
+  },[currentUser])
 
   return (
     <div className="p-5 lg:px-15">
