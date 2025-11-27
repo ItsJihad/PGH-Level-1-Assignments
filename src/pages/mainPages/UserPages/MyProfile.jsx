@@ -35,10 +35,14 @@ function MyProfile() {
                 <div className="text-center mb-6">
                   <img
                     className="w-32 h-32 rounded-full mx-auto mb-4 shadow-sm"
-                    src={currentUser?.photoURL}
+                    src={
+                      currentUser.photoURL
+                        ? currentUser.photoURL
+                        : "/assets/profile.png"
+                    }
                   />
                   <h2 className="text-black dark:text-white font-medium text-lg">
-                    {currentUser?.displayName}
+                    {currentUser.displayName?currentUser.displayName:"USER"}
                   </h2>
                   {/* <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Import Export Hub
@@ -127,7 +131,7 @@ function MyProfile() {
                     <input
                       id="name"
                       disabled
-                      value={currentUser?.displayName}
+                      value={currentUser.displayName?currentUser.displayName:"USER"}
                       className="h-10 px-3 rounded-lg text-sm w-full bg-gray-50 dark:bg-black text-primary opacity-80"
                     />
                   </div>

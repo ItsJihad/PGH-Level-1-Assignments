@@ -1,5 +1,5 @@
 import { use, useRef, useState } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import useAxios from "../../../hooks/UseAxios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
@@ -104,8 +104,7 @@ function ProductDetails() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="lucide lucide-circle-check-big w-4 h-4"
-                >
+                  className="lucide lucide-circle-check-big w-4 h-4">
                   <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                   <path d="m9 11 3 3L22 4" />
                 </svg>
@@ -224,14 +223,14 @@ function ProductDetails() {
                     />
 
                     <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-center p-4">
-                      <button
+                      <Link
                         type="submit"
                         name="submitButton"
                         disabled={isDisabled}
                         className=" flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all px-3 rounded-lg bg-primary p-2"
                       >
                         Confirm Import
-                      </button>
+                      </Link>
                     </div>
                   </form>
                 </div>
@@ -240,12 +239,12 @@ function ProductDetails() {
 
             {/* ---------------------------------------------------- */}
             <div className="space-y-3 mb-8">
-              <button
+              <Link
                 onClick={() => handlemodal()}
                 className="inline-flex items-center justify-center gap-2 text-sm font-medium transition-all border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 px-6 w-full rounded-lg"
               >
                 Import Now
-              </button>
+              </Link>
             </div>
 
             <div className="relative">

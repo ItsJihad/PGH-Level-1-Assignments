@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 export default function SignUp() {
   const { CreateUser, setLoader,OneTapGoogle,currentUser } = use(AuthContext);
@@ -14,6 +15,25 @@ export default function SignUp() {
     const photoURL = e.target.photoURL.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    
+    // --------------------------------------------------
+  if (!password) {
+    return Swal.fire("Error", "Password is required", "error");
+  }
+  if (password.length < 6) {
+    return Swal.fire("Error", "Password must be at least 6 characters", "error");
+  }
+  const strongPasswordRegex =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+if (!strongPasswordRegex.test(password)) {
+  return Swal.fire(
+    "Weak Password",
+    "Password must have 8+ characters, uppercase, lowercase, number, and symbol",
+    "error"
+  );
+}
+    // ----------------------------------------------------------
 
     CreateUser(email, password)
       .then(() => {
@@ -24,7 +44,7 @@ export default function SignUp() {
       .catch((error) => {
         const errorMessage = error.message;
         setErrorM(errorMessage)
-    
+        
         
       });
 
@@ -50,7 +70,7 @@ export default function SignUp() {
         <div className="bg-base-100   shadow-sm rounded-2xl p-6 sm:p-8 md:p-10 border border-neutral-200   font-[montserrat]">
           {/* Icon */}
           <div className="flex justify-center mb-6 sm:mb-8">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-purple-600 flex items-center justify-center shadow-sm">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-base-100 flex items-center justify-center shadow-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="text-primary w-6 h-6 sm:w-8 sm:h-8"

@@ -23,6 +23,7 @@ function ImMiniCards({product}) {
           icon: "success",
         });
       }
+
     });
     
   };
@@ -50,7 +51,7 @@ function ImMiniCards({product}) {
           </div>
           <div className="grid grid-cols-2 gap-3 font-[montserrat]">
             <Link
-              to={`/products/${product._id}`}
+              to={`/products/${product.productID._id}`}
               className="btn btn-primary text-white "
             >
               View Details

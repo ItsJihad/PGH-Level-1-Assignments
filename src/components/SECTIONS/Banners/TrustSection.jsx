@@ -193,12 +193,12 @@ function TrustSection() {
           </p>
           <div className="flex items-center gap-4 pt-4 border-t border-white/20 dark:border-white/10">
             <img
-              src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmF0b3J8ZW58MXx8fHwxNzYyODM0MjQyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080"
+              src="https://images.pexels.com/photos/2709961/pexels-photo-2709961.jpeg"
               alt="John Doe"
               className="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 object-cover"
             />
             <div>
-              <h4 className="text-primary">John Doe</h4>
+              <h4 className="text-primary">Verkkar</h4>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 Tech Innovations Inc.
               </p>
@@ -289,12 +289,12 @@ function TrustSection() {
           </p>
           <div className="flex items-center gap-4 pt-4 border-t border-white/20 dark:border-white/10">
             <img
-              src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmF0b3J8ZW58MXx8fHwxNzYyODM0MjQyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080"
+              src="https://images.pexels.com/photos/5010780/pexels-photo-5010780.jpeg"
               alt="John Doe"
               className="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 object-cover"
             />
             <div>
-              <h4 className="text-primary">John Doe</h4>
+              <h4 className="text-primary">Insa</h4>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 Tech Innovations Inc.
               </p>

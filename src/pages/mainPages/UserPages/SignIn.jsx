@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 export default function SignIn() {
   const { SignINuser, setLoader,OneTapGoogle } = use(AuthContext);
