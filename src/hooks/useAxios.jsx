@@ -2,7 +2,7 @@ import axios from "axios";
 import useAuth from "./useAuth";
 
 const AxiosInstance = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "https://ie-hub-backend.vercel.app"
 });
 
 const useAxios = () => {

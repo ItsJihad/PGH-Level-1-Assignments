@@ -4,19 +4,31 @@ import { AuthContext } from "../../../../context/AuthContext/AuthContext";
 import MiniCards from "../../../../components/singleComponents/MiniCards";
 import EmptyExport from "./EmptyExport";
 import Swal from "sweetalert2";
+import LoadingPage from "../../../additionalPages/Loading/LoadingPage";
 
 function MyExports() {
   const Axios = useAxios();
   const { currentUser } = use(AuthContext);
   const [product, setProduct] = useState([]);
-
+  const [spinner,setSpinner] = useState(true)
   useEffect(() => {
+    let mount =true
+    setSpinner(true)
     Axios.get(
-      `http://localhost:3000/myexports?email=${currentUser?.email}`
-    ).then((data) => {
+      `/myexports?email=${currentUser?.email}`)
+    .then((data) => {
+      if(!mount)return
       setProduct(data.data);
+      console.log(data.data);
+      
+      setSpinner(false)
     });
-  }, [currentUser, product]);
+
+    return()=>{
+      mount=false
+    }
+
+  }, [currentUser]);
 
   const handleDelete = (Id) => {
     setProduct((prev) => prev.filter((p) => p._id !== Id));
@@ -48,10 +60,11 @@ function MyExports() {
     Axios.patch(`/products/${selectedProduct._id}`, UpdatedProduct).then(
       (res) => {
         if (res.data.matchedCount) {
+          
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Your product has been updated",
+            title: "Your product has been updated.",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -60,6 +73,10 @@ function MyExports() {
       }
     );
   };
+
+  if(spinner){
+    return  <LoadingPage></LoadingPage>
+  }
 
   return (
     <div className="p-10">

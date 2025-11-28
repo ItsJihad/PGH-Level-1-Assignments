@@ -3,22 +3,32 @@ import Card from "../../../components/singleComponents/Card";
 import useAxios from "../../../hooks/UseAxios";
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
+import LoadingPage from "../../additionalPages/Loading/LoadingPage";
 
 function AllProducts() {
   const {currentUser}=use(AuthContext)
   const Axios = useAxios();
   const [product, setProduct] = useState([]);
+   
+  const [spinner,setSpinner] = useState(true)
 
   useEffect(()=>{
     let mounted =true
+    setSpinner (true)
     Axios.get("/products").then((data) => {
       if(!mounted)return
     setProduct(data.data);
+     setSpinner(false)
   });
   return ()=>{
     mounted=false
+    
   }
   },[currentUser])
+
+ if(spinner){
+  return  <LoadingPage></LoadingPage>
+ }
 
   return (
     <div className="p-5 lg:px-15">

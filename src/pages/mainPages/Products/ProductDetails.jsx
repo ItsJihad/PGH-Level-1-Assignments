@@ -38,14 +38,18 @@ function ProductDetails() {
 
     const quantity = Number(e.target.quantity.value);
 
-     if (!e.target.quantity.value || !Number.isFinite(quantity) || quantity < 1) {
+    if (
+      !e.target.quantity.value ||
+      !Number.isFinite(quantity) ||
+      quantity < 1
+    ) {
       setIsDisabled(true);
       Swal.fire({
         icon: "error",
         title: "Invalid quantity",
         text: "Please enter a valid quantity (>= 1).",
       });
-      modalref.current.close()
+      modalref.current.close();
       return;
     }
 
@@ -87,7 +91,7 @@ function ProductDetails() {
     modalref.current?.close();
   };
 
-  if (!product) return <div className="p-10">Product not found</div>;
+  if (!product) return <div className="p-10">LOADING , VERCEL IS SLOW !</div>;
 
   return (
     <div className="p-10 font-[montserrat]">
@@ -160,11 +164,18 @@ function ProductDetails() {
               <p className="text-primary text-sm">per unit</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="bg-base-100 shadow-xl backdrop-blur-2xl border border-white/20 rounded-xl p-4">
+              <h2 className="font-bold text-primary text-2xl">
+                Description :{" "}
+              </h2>
+              {product.description}
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mt-4 mb-8">
               <div className="relative group">
                 <div className="relative bg-base-100 shadow-xl backdrop-blur-2xl border border-white/20 rounded-xl p-4">
                   <div className="flex items-center gap-2 text-primary mb-1">
-                    <span className="text-sm">Origin</span>
+                    <span className="text-sm">Origin :</span>
                   </div>
                   <p className="text-primary">{product.origin}</p>
                 </div>
@@ -173,7 +184,7 @@ function ProductDetails() {
               <div className="relative group">
                 <div className="relative bg-base-100 shadow-xl backdrop-blur-2xl border border-white/20 rounded-xl p-4">
                   <div className="flex items-center gap-2 text-primary mb-1">
-                    <span className="text-sm">Available</span>
+                    <span className="text-sm">Available :</span>
                   </div>
                   <p className="text-primary">{Pquantity} units</p>
                 </div>
@@ -224,7 +235,7 @@ function ProductDetails() {
             <div className="space-y-3 mb-8">
               <button
                 onClick={handlemodal}
-                className="inline-flex items-center justify-center gap-2 text-sm font-medium transition-all border bg-background text-foreground hover:bg-accent hover:text-accent-foreground h-10 px-6 w-full rounded-lg"
+                className="inline-flex items-center justify-center gap-2 text-sm font-medium transition-all border bg-background  hover:bg-accent hover:text-accent-foreground h-10 px-6 w-full rounded-lg"
               >
                 Import Now
               </button>

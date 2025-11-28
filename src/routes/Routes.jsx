@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         Component: HomePage,
-        loader: () => fetch("http://localhost:3000/recentproducts"),
+        loader: () => fetch("https://ie-hub-backend.vercel.app/recentproducts"),
       },
       {
         path: "/products",

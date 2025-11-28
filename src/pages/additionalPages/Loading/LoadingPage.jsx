@@ -2,9 +2,9 @@ import React from "react";
 
 function LoadingPage() {
   return (
-    <div className="min-h-screen  inset-0 flex items-center justify-center relative z-100 bg-base-100 backdrop-blur-3xl">
-      <span className="loading loading-spinner text-primary"></span>
-    </div>
+    <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-base-100/80 backdrop-blur-3xl">
+  <span className="loading loading-spinner text-primary"></span>
+</div>
   );
 }
 

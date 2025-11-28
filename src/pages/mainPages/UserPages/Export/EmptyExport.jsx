@@ -7,9 +7,9 @@ function EmptyExport() {
       <main className="  font-[montserrat]">
         <div className="px-6 lg:px-12 py-12">
           <div className="mb-8">
-            <a
+            <Link 
               className="inline-flex items-center gap-2 text-primary mb-4 transition-colors"
-              href="/products"
+              to={"/products"}
               data-discover="true"
             >
               <svg
@@ -29,7 +29,7 @@ function EmptyExport() {
                 <path d="M19 12H5"></path>
               </svg>
               Continue Shopping
-            </a>
+            </Link>
             <h1 className="text-primary text-4xl font-extrabold mb-2">
               My Exports
             </h1>

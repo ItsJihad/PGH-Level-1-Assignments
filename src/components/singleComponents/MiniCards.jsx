@@ -39,7 +39,7 @@ function MiniCards({ product, onDelete, handleModal, setSelectedProduct }) {
     } catch (error) {
       console.log(error);
     }
-
+    
     handleModal();
   };
 
