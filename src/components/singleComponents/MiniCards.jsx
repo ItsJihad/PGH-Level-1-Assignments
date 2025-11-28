@@ -22,7 +22,7 @@ function MiniCards({ product, onDelete, handleModal, setSelectedProduct }) {
         onDelete(product._id);
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your export has been deleted.",
           icon: "success",
         });
       }
@@ -37,7 +37,7 @@ function MiniCards({ product, onDelete, handleModal, setSelectedProduct }) {
         setSelectedProduct(res.data);
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
     
     handleModal();

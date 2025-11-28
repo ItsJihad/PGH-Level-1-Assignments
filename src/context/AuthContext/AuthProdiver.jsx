@@ -25,7 +25,7 @@ function AuthProdiver({ children }) {
 
   useEffect(() => {
     const unsubs = onAuthStateChanged(Auth, (currentUser) => {
-      console.log("inside Observer :", currentUser)
+      // console.log("inside Observer :", currentUser)
       Setuser(currentUser)
       setLoader(false)
     });

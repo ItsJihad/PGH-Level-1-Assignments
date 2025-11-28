@@ -10,24 +10,21 @@ function MyExports() {
   const Axios = useAxios();
   const { currentUser } = use(AuthContext);
   const [product, setProduct] = useState([]);
-  const [spinner,setSpinner] = useState(true)
+  const [spinner, setSpinner] = useState(true);
   useEffect(() => {
-    let mount =true
-    setSpinner(true)
-    Axios.get(
-      `/myexports?email=${currentUser?.email}`)
-    .then((data) => {
-      if(!mount)return
+    let mount = true;
+    setSpinner(true);
+    Axios.get(`/myexports?email=${currentUser?.email}`).then((data) => {
+      if (!mount) return;
       setProduct(data.data);
-      console.log(data.data);
       
-      setSpinner(false)
+
+      setSpinner(false);
     });
 
-    return()=>{
-      mount=false
-    }
-
+    return () => {
+      mount = false;
+    };
   }, [currentUser]);
 
   const handleDelete = (Id) => {
@@ -45,8 +42,8 @@ function MyExports() {
 
     const name = e.target.name.value;
     const photourl = e.target.photourl.value;
-    const quantity = e.target.quantity.value;
-    const price = e.target.price.value;
+    const quantity = Number(e.target.quantity.value);
+    const price = Number(e.target.price.value);
 
     const UpdatedProduct = {
       name: name,
@@ -55,12 +52,32 @@ function MyExports() {
       price: price,
     };
 
-    console.log(product);
+    if (
+          !e.target.quantity.value ||
+          !Number.isFinite(quantity) ||
+          quantity < 1
+         || !e.target.price.value ||
+          !Number.isFinite(price) ) {
+          Swal.fire({
+            icon: "error",
+            title: "Invalid quantity",
+            text: "Please enter a valid quantity (>= 1).",
+          });
+          modalRef.current.close();
+          return;
+        }
 
     Axios.patch(`/products/${selectedProduct._id}`, UpdatedProduct).then(
       (res) => {
         if (res.data.matchedCount) {
-          
+          setProduct((prev) =>
+            prev.map((prevProduct) =>
+              prevProduct._id === selectedProduct._id
+                ? { ...prevProduct, ...UpdatedProduct }
+                : prevProduct
+            )
+          );
+
           Swal.fire({
             position: "center",
             icon: "success",
@@ -74,8 +91,8 @@ function MyExports() {
     );
   };
 
-  if(spinner){
-    return  <LoadingPage></LoadingPage>
+  if (spinner) {
+    return <LoadingPage></LoadingPage>;
   }
 
   return (

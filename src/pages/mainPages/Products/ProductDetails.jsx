@@ -17,6 +17,7 @@ function ProductDetails() {
     modalref.current.showModal();
   };
   const [isDisabled, setIsDisabled] = useState(false);
+  const [spinner, setSpinner] = useState(true);
 
   useEffect(() => {
     if (!id) return;
@@ -91,7 +92,12 @@ function ProductDetails() {
     modalref.current?.close();
   };
 
-  if (!product) return <div className="p-10">LOADING , VERCEL IS SLOW !</div>;
+  if (!product)
+    return (
+      <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-base-100/80 backdrop-blur-3xl">
+        <span className="loading loading-spinner text-primary"></span>
+      </div>
+    );
 
   return (
     <div className="p-10 font-[montserrat]">

@@ -20,7 +20,7 @@ function ImMiniCards({product ,onDelete}) {
         onDelete(product._id)
         Swal.fire({
           title: "Removed!",
-          text: "Your file has been removed.",
+          text: "Your import has been removed.",
           icon: "success",
         });
       }
