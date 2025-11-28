@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import useAxios from "../../hooks/UseAxios";
 import Swal from "sweetalert2";
 
-function ImMiniCards({product}) {
+function ImMiniCards({product ,onDelete}) {
   const Axios = useAxios();
   const handleRemove = () => {
     Swal.fire({
@@ -17,6 +17,7 @@ function ImMiniCards({product}) {
     }).then((result) => {
       if (result.isConfirmed) {
         Axios.delete(`/delete-myimports/${product._id}`);
+        onDelete?.()
         Swal.fire({
           title: "Removed!",
           text: "Your file has been removed.",

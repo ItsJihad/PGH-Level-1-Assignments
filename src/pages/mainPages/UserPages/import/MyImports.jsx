@@ -15,6 +15,11 @@ function MyImports() {
     });
   }, [currentUser]);
 
+    const handleDelete = (Id) => {
+    setProduct((prev) => prev.filter(p => p._id !== Id));
+  };
+
+
   return (
     <div className="p-10">
       {product.length > 0 && (
@@ -25,7 +30,7 @@ function MyImports() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
             {product.map((product) => (
-              <ImMiniCards key={product._id} product={product}></ImMiniCards>
+              <ImMiniCards key={product._id} product={product} onDelete={() => handleDelete(product._id)}></ImMiniCards>
             ))}
           </div>
         </>

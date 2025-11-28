@@ -1,10 +1,13 @@
-import React from "react";
-import { Link } from "react-router";
+import { useState } from "react";
 import useAxios from "../../hooks/UseAxios";
 import Swal from "sweetalert2";
+import NenoExportCards from "./NenoExportCards";
 
-function MiniCards({ product }) {
+
+function MiniCards({ product,onDelete }) {
   const Axios = useAxios();
+  // console.log(product._id);
+  const [expo,setExpo]=useState([product])
   const handleRemove = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -17,53 +20,30 @@ function MiniCards({ product }) {
     }).then((result) => {
       if (result.isConfirmed) {
         Axios.delete(`/myexports/${product._id}`);
+        onDelete?.();
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
           icon: "success",
         });
       }
+       const remaining= expo.filter(expo=> expo._id !== product._id)
+        setExpo(remaining)
     });
-    
   };
+
+  const handleUpdate = () => {};
 
   return (
     <div>
-      <div className="card bg-base-100  shadow-sm backdrop-blur-xs  shadow-blue-500/30 hover:shadow-blue-500/20 dark:hover:shadow-blue-900/40 transition-all duration-500 flex flex-col h-full hover:border-white/40 dark:hover:border-white/20  ">
-        <figure>
-          <img
-            className="w-[454px] h-[300px] object-cover"
-            src={product.photourl}
-          />
-        </figure>
-        <div className="card-body ">
-          <div className="card-actions ">
-            <h2 className="card-title font-[montserrat] text-center">
-              {product.name}
-            </h2>
-            <div className="grid grid-cols-2 gap-5 p-2  font-[montserrat] ">
-              <div className="font-semibold w-full">
-                Quantity: {product.quantity}
-                {""} units
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3 font-[montserrat]">
-            <Link
-              to={`/products/${product._id}`}
-              className="btn btn-primary text-white "
-            >
-              View Details
-            </Link>
-            <button
-              onClick={() => handleRemove(product._id)}
-              className="btn btn-primary text-white  "
-            >
-              Remove
-            </button>
-          </div>
-        </div>
-      </div>
+       {
+
+        expo.map(exp=> <NenoExportCards key={product._id} product={product} handleRemove={handleRemove} ></NenoExportCards>)
+        
+        
+
+
+       }
     </div>
   );
 }
