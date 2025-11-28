@@ -14,7 +14,7 @@ import LoadingPage from "../pages/additionalPages/Loading/LoadingPage";
 import MyProfile from "../pages/mainPages/UserPages/MyProfile";
 export const router = createBrowserRouter([
   {
-    HydrateFallback: <LoadingPage></LoadingPage>,
+    // HydrateFallback: <LoadingPage></LoadingPage>,
     path: "/",
     Component: Root,
     errorElement: <NotFound></NotFound>,

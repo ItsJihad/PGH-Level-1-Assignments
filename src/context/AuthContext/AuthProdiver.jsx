@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import LoadingPage from "../../pages/additionalPages/Loading/LoadingPage";
 
@@ -45,7 +46,9 @@ const OneTapGoogle=()=>{
 }
 
 
-
+const UpdateUser=(UpdateUser)=>{
+  return updateProfile(Auth.currentUser,UpdateUser)
+}
 
   const AuthInfo = {
     CreateUser,
@@ -53,6 +56,7 @@ const OneTapGoogle=()=>{
     currentUser,
     setLoader,
     OneTapGoogle,
+    UpdateUser
   };
   return (
     <div>

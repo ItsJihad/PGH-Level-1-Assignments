@@ -228,7 +228,7 @@ function AddExport() {
             <div className="pt-6">
               <button
                 type="submit"
-                className="w-full h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm"
+                className="w-full h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm hover:cursor-pointer"
               >
                 Add Export Product
               </button>

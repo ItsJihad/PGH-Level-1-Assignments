@@ -4,7 +4,7 @@ import { Link } from "react-router";
 function EmptyExport() {
   return (
     <div>
-      <main className="min-h-screen font-[montserrat]">
+      <main className="  font-[montserrat]">
         <div className="px-6 lg:px-12 py-12">
           <div className="mb-8">
             <a

@@ -63,24 +63,24 @@ function NavBar() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-[montserrat] text-lg font-bold  ">
             <li>
-              <NavLink to={"/"}>Home</NavLink>
+              <NavLink to={"/"} >Home</NavLink>
             </li>
             <li>
-              <NavLink to={"/products"}>All Products</NavLink>
+              <NavLink to={"/products"} >All Products</NavLink>
             </li>
 
             {currentUser && (
               <ul className="flex">
                 <li>
-                  <NavLink to={"/my-exports"}>My Exports</NavLink>
+                  <NavLink to={"/my-exports"} >My Exports</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/my-imports"}>My Imports</NavLink>
+                  <NavLink to={"/my-imports"} >My Imports</NavLink>
                 </li>
               </ul>
             )}
             <li>
-              <NavLink to={"/add-export"}>Add Export</NavLink>
+              <NavLink to={"/add-export"} >Add Export</NavLink>
             </li>
           </ul>
         </div>

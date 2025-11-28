@@ -127,7 +127,7 @@ export default function SignIn() {
             {/* Sign In Button */}
             <button
               type="submit"
-              className="w-full py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm sm:text-base transition"
+              className="w-full py-2.5 sm:py-3 hover:cursor-pointer bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm sm:text-base transition"
             >
               Sign In
             </button>
@@ -146,7 +146,7 @@ export default function SignIn() {
           <button
             type="button"
             onClick={()=>TapLogin()}
-            className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-neutral-300  text-primary  bg-white   hover:bg-neutral-100 dark:hover:bg-green-300 transition text-sm sm:text-base"
+            className="w-full flex items-center hover:cursor-pointer justify-center gap-2 py-2 rounded-lg border border-neutral-300  text-primary  bg-white   hover:bg-neutral-100 dark:hover:bg-green-300 transition text-sm sm:text-base"
           >
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5"
@@ -174,7 +174,7 @@ export default function SignIn() {
           </button>
 
           {/* Register */}
-          <p className="text-center mt-4 text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
+          <p className="text-center mt-4 hover:cursor-pointer text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
             Don't have an account?{" "}
             <Link
               to={"/sign-up"}

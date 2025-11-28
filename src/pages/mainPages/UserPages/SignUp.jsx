@@ -4,7 +4,7 @@ import { AuthContext } from "../../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
 export default function SignUp() {
-  const { CreateUser, setLoader,OneTapGoogle,currentUser } = use(AuthContext);
+  const { CreateUser, setLoader,OneTapGoogle,UpdateUser } = use(AuthContext);
   const [errorM,setErrorM]=useState("")
 
   const location = useLocation();
@@ -28,19 +28,25 @@ if (!strongPasswordRegex.test(password)) {
   );
 }
     // ----------------------------------------------------------
+ 
+
+
 
     CreateUser(email, password)
       .then(() => {
         setLoader(true);
+         UpdateUser({
+            displayName:name,
+                  photoURL:photoURL
+          })
         e.target.reset(), navigate(location.state || "/");
         setLoader(false);
       })
       .catch((error) => {
         const errorMessage = error.message;
         setErrorM(errorMessage)
-        
-        
-      });
+      })
+     
 
       
 
@@ -165,7 +171,7 @@ if (!strongPasswordRegex.test(password)) {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full py-2.5 sm:py-3 bg-purple-600   text-black rounded-lg text-sm sm:text-base transition"
+              className="w-full py-2.5 sm:py-3 bg-purple-600 hover:cursor-pointer  text-black rounded-lg text-sm sm:text-base transition hover:cursor-pointer"
             >
               Create Account
             </button>
@@ -184,7 +190,7 @@ if (!strongPasswordRegex.test(password)) {
           <button
             type="button"
             onClick={()=>TapLogin()}
-            className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-neutral-300 text-primary  bg-white   hover:bg-neutral-100   transition text-sm sm:text-base"
+            className="w-full flex items-center hover:cursor-pointer justify-center gap-2 py-2 rounded-lg border border-neutral-300 text-primary  bg-white   hover:bg-neutral-100   transition text-sm sm:text-base"
           >
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5"

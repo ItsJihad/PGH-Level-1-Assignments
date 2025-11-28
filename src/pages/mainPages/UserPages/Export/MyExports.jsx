@@ -86,7 +86,7 @@ function MyExports() {
           <dialog ref={modalRef} id="my_modal_3" className="modal">
             <div className="modal-box">
               <form method="dialog">
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 hover:cursor-pointer">
                   ✕
                 </button>
               </form>
