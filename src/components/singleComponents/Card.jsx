@@ -31,10 +31,10 @@ function Card({ product }) {
           </div>
           <div className="grid grid-cols-2 gap-3 font-[montserrat]">
             <button
-              className="btn btn-primary text-white " >
+              className="btn btn-primary text-white hover:cursor-pointer " >
                Details
             </button>
-            <button className="btn btn-primary text-white  ">Import</button>
+            <button className="btn btn-primary text-white hover:cursor-pointer  ">Import</button>
           </div>
         </div>
       </div>

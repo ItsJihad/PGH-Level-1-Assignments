@@ -10,9 +10,14 @@ function AllProducts() {
   const [product, setProduct] = useState([]);
 
   useEffect(()=>{
+    let mounted =true
     Axios.get("/products").then((data) => {
+      if(!mounted)return
     setProduct(data.data);
   });
+  return ()=>{
+    mounted=false
+  }
   },[currentUser])
 
   return (
