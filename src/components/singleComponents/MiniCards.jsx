@@ -3,11 +3,10 @@ import useAxios from "../../hooks/UseAxios";
 import Swal from "sweetalert2";
 import NenoExportCards from "./NenoExportCards";
 
-
-function MiniCards({ product,onDelete }) {
+function MiniCards({ product, onDelete, handleModal, setSelectedProduct }) {
   const Axios = useAxios();
-  // console.log(product._id);
-  const [expo,setExpo]=useState([product])
+
+  const [expo, setExpo] = useState([product]);
   const handleRemove = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -20,30 +19,40 @@ function MiniCards({ product,onDelete }) {
     }).then((result) => {
       if (result.isConfirmed) {
         Axios.delete(`/myexports/${product._id}`);
-        onDelete?.();
+        onDelete(product._id);
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
           icon: "success",
         });
       }
-       const remaining= expo.filter(expo=> expo._id !== product._id)
-        setExpo(remaining)
+      const remaining = expo.filter((expo) => expo._id !== product._id);
+      setExpo(remaining);
     });
   };
 
-  const handleUpdate = () => {};
+  const handleClick = (id) => {
+    try {
+      Axios.get(`/products/${id}`).then((res) => {
+        setSelectedProduct(res.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    handleModal();
+  };
 
   return (
     <div>
-       {
-
-        expo.map(exp=> <NenoExportCards key={product._id} product={product} handleRemove={handleRemove} ></NenoExportCards>)
-        
-        
-
-
-       }
+      {expo.map((exp) => (
+        <NenoExportCards
+          key={product._id}
+          product={product}
+          handleRemove={handleRemove}
+          handleClick={handleClick}
+        ></NenoExportCards>
+      ))}
     </div>
   );
 }

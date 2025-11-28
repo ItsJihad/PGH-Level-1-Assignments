@@ -17,7 +17,7 @@ function ImMiniCards({product ,onDelete}) {
     }).then((result) => {
       if (result.isConfirmed) {
         Axios.delete(`/delete-myimports/${product._id}`);
-        onDelete?.()
+        onDelete(product._id)
         Swal.fire({
           title: "Removed!",
           text: "Your file has been removed.",

@@ -1,5 +1,4 @@
 import React, { use, useEffect, useState } from "react";
-import LoadingPage from "../../../additionalPages/Loading/LoadingPage";
 import useAxios from "../../../../hooks/UseAxios";
 import { AuthContext } from "../../../../context/AuthContext/AuthContext";
 import ImMiniCards from "../../../../components/singleComponents/ImMiniCards";
@@ -30,7 +29,7 @@ function MyImports() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
             {product.map((product) => (
-              <ImMiniCards key={product._id} product={product} onDelete={() => handleDelete(product._id)}></ImMiniCards>
+              <ImMiniCards key={product._id} product={product} onDelete={(Id) => handleDelete(Id)}></ImMiniCards>
             ))}
           </div>
         </>
