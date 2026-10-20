@@ -1,18 +1,52 @@
 
-# IE-HUB API 🚀
+# 🌐 IE-Hub — Modern Export & Import Management Platform
 
-This is a simple API for my Import-Export Hub Frontend Project,where user is able to perform "GET , POST , PATCH ,DELETE" operations with proper Authentication restriction.
+A sleek web platform that lets users explore global products, manage exports, and import items into their personal **My Imports** list with one click. Designed with a clean UI, real-time interactions, and secure data handling.
 
+---
 
+## 🚀 Live Demo
+- **Frontend:** https://pgh-iehub.netlify.app  
+- **Backend API:** https://ie-hub-backend.vercel.app
+
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+- React 19  
+- TailwindCSS + DaisyUI  
+- Axios  
+- React Router  
+- Firebase Authentication  
+- SweetAlert2  
+
+### **Backend**
+- Node.js / Express  
+- MongoDB  
+- CORS  
+
+---
+
+## ✨ Features
+- Browse global product listings  
+- One-click import to **My Imports**  
+- Export management tools  
+- Secure user authentication  
+- Smooth and responsive UI  
+
+---
+
+## 📦 Installation (Local Setup)
+
+### Frontend
+```bash
+npm install
+npm run dev
 ```
-📊 https://ie-hub-backend.vercel.app/
+
+### Backend
 ```
-
-
-
-## Tech Stack 🤖
-
- - [Express 🍃](https://expressjs.com)
- - [Mongo DB 🗂️](https://cloud.mongodb.com/)
- - [Firebase 🔥](https://firebase.google.com/)
-
+npm install
+nodemon index.js
+```
