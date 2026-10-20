@@ -1,0 +1,227 @@
+require("dotenv").config();
+const express = require("express");
+const app = express();
+
+const cors = require("cors");
+app.use(cors());
+app.use(express.json());
+
+const port = 3000;
+
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.xiyzyju.mongodb.net/?appName=Cluster0`;
+
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+
+const admin = require("firebase-admin");
+
+const decoded = Buffer.from(process.env.FB_SERVICE_KEY, "base64").toString("utf8");
+const serviceAccount = JSON.parse(decoded);
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+// -------------------------------------------------------
+
+const AuthVerification = async (req, res, next) => {
+  const AuthToken = req.headers.authorization;
+
+  if (!AuthToken) {
+    res.status(401).send({ message: "unauthorized" });
+  }
+  const token = AuthToken.split(" ")[1];
+  // console.log(token);
+
+  try {
+    const decode = await admin.auth().verifyIdToken(token);
+
+    req.token_email = decode.email;
+
+    next();
+  } catch (err) {
+    return res.status(401).send({ message: "unauthorized" });
+  }
+};
+
+async function run() {
+  try {
+    await client.connect();
+
+    const IEdb = client.db("IEdb");
+    const IEcol = IEdb.collection("AllProducts");
+    const UserImports = IEdb.collection("UserImports");
+    // --------------------------get all product at once----------------------------------
+    app.get("/products", AuthVerification, async (req, res) => {
+      const cursor = IEcol.find();
+      const result = await cursor.toArray();
+      // console.log("hitting all products");
+
+      res.send(result);
+    });
+    //-----------------------------get a specific product with ID------------------------------------
+    app.get("/products/:id", AuthVerification, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await IEcol.findOne(query);
+      // console.log("get a specific product with ID");
+
+      res.send(result);
+    });
+
+    // ---------------------------get recent 6 products-----------------------------------------
+    app.get("/recentproducts", async (req, res) => {
+      const cursor = IEcol.find().sort({ createdAt: 1 }).limit(6);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+    // ---------------------------get recent 3 products-----------------------------------------
+    app.get("/recent3", async (req, res) => {
+      const cursor = IEcol.find().sort({ createdAt: -1 }).limit(3);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    // --------------------------------POST API-------------------------------------------------------------------------------
+    app.post("/products", AuthVerification, async (req, res) => {
+      const quantity = Number(req.body.quantity);
+      const price = Number(req.body.price);
+      const rating = Number(req.body.rating);
+
+      const TobeStored = {
+        name: req.body.name,
+        photourl: req.body.photourl,
+        rating,
+        price,
+        origin: req.body.origin,
+        email: req.body.email,
+        quantity,
+      };
+      const result = await IEcol.insertOne(TobeStored);
+      res.send(result);
+    });
+
+    //--------------------------------------------delete specific product by ID from Import---------------------
+    app.delete("/myimports/:id", AuthVerification, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await UserImports.deleteOne(query);
+      // console.log("delete specific product by ID from Import");
+
+      res.send(result);
+    });
+
+    //---------------------------------------------------------MYImports--------------------------------------------
+    app.post("/myimports", AuthVerification, async (req, res) => {
+      const productID = req.body.productID;
+      const proID = { _id: new ObjectId(productID) };
+      const quantity = Number(req.body.quantity);
+
+      const TobeStored = {
+        productID: proID,
+        name: req.body.name,
+        photourl: req.body.photourl,
+        rating: req.body.rating,
+        price: req.body.price,
+        origin: req.body.origin,
+        email: req.body.email,
+        quantity,
+      };
+      const update = await IEcol.updateOne(proID, {
+        $inc: { quantity: -quantity },
+      });
+      const result = await UserImports.insertOne(TobeStored);
+      res.send(result);
+    });
+    //-----------------------------------get specific Imports ------------------------------------------
+    app.get("/myimports", AuthVerification, async (req, res) => {
+      const email = req.query.email;
+      const DBquery = {};
+      if (email) {
+        DBquery.email = email;
+      }
+      const cursor = UserImports.find(DBquery);
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //----------------------------------delete specific user's imports-------------------------
+    app.delete("/delete-myimports/:id", AuthVerification, async (req, res) => {
+      const ID = { _id: new ObjectId(req.params.id) };
+      const target = await UserImports.findOne(ID); //here i got the targeted product from the ImportList DB
+      //
+
+      const productID = target.productID._id; //here i excluded the main id of the product
+      const productQuantity = target.quantity; //here i excluded the quantity of the units
+      //
+
+      const mainProduct = await IEcol.findOne(productID); //picked the main product from all products
+      await IEcol.updateOne(mainProduct, {
+        $inc: { quantity: +productQuantity },
+      }); // added quantity as per calculation
+      const result = UserImports.deleteOne(ID); //deleted the product from my imports DB
+      res.send(result);
+    });
+    //------------------------------------get specific user Export ---------------------------
+    app.get("/myexports", AuthVerification, async (req, res) => {
+      const email = req.query.email;
+
+      const DBquery = {};
+      if (email) {
+        DBquery.email = email;
+      }
+      const cursor = IEcol.find(DBquery);
+      const result = await cursor.toArray();
+
+      res.send(result);
+    });
+    //--------------------------------------Update An Export -----------------------
+    app.patch("/products/:id", AuthVerification,async (req, res) => {
+      const id = req.params.id;
+      const UpdatedProduct = req.body;
+      const query = { _id: new ObjectId(id) };
+      const update = {
+        $set: {
+          name: UpdatedProduct.name,
+          photourl: UpdatedProduct.photourl,
+          quantity: UpdatedProduct.quantity,
+          price: UpdatedProduct.price,
+        },
+      };
+      const options = {};
+
+      const result = await IEcol.updateOne(query, update, options);
+      // console.log("updating");
+      // console.log(result);
+
+      res.send(result);
+    });
+
+    //----------------------------------------DELETE with ID------------------------
+    app.delete("/myexports/:id", AuthVerification, async (req, res) => {
+      const id = req.params.id;
+      const que = { _id: new ObjectId(id) };
+      const result = await IEcol.deleteOne(que);
+      // console.log("deleted");
+
+      res.send(result);
+    });
+    // ---------------------------Ping the Server----------------------------------
+    // Send a ping to confirm a successful connection
+    // await client.db("admin").command({ ping: 1 });
+    // console.log(
+    //   "Pinged your deployment. You successfully connected to MongoDB!"
+    // );
+  } finally {
+    app.listen(port, () => {
+      // console.log("server is up at : ", port);
+    });
+  }
+}
+run().catch(console.dir);
